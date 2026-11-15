@@ -4,9 +4,11 @@
  * Implement your (parallel) simulation here!
  */
 
+
 #include <stdio.h>
 #include <stdlib.h>
 
+#include <omp.h>
 #include "simulate.h"
 
 
@@ -29,5 +31,13 @@ double *simulate(const int i_max, const int t_max, const int num_threads,
      * Your implementation should go here.
      */
 
+    #pragma omp parallel for num_threads(num_threads) schedule(static)
+    for (int i = 1; i < i_max - 1; i++) {
+        next_array[i] = 2 * current_array[i] - old_array[i] + 0.15 * (current_array[i - 1] 
+            - 2 * current_array[i] + current_array[i + 1]);
+    }
+
     return current_array;
+
+
 }
