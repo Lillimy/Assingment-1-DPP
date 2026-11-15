@@ -11,7 +11,7 @@ CC = gcc
 WARNFLAGS = -Wall -Werror-implicit-function-declaration -Wshadow \
 		  -Wstrict-prototypes -pedantic-errors
 CFLAGS = -std=c99 -ggdb -O2 $(WARNFLAGS) -D_POSIX_C_SOURCE=200112
-LFLAGS = -lm -lrt -lpthread
+LFLAGS = -lm -lpthread
 
 # Do some substitution to get a list of .o files from the given .c files.
 OBJFILES = $(patsubst %.c,%.o,$(SRCFILES))
